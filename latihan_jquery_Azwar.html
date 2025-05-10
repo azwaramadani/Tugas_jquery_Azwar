@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Latihan jQuery Stylish</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: url('Tbi1.jpg') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      padding: 40px 20px;
+      color: #fff;
+    }
+
+    h1 {
+      text-align: center;
+      font-weight: 600;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    }
+
+    .section {
+      max-width: 600px;
+      margin: 40px auto;
+      background-color: #222; /* solid background */
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    }
+
+    .section h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .section p {
+      font-size: 14px;
+      margin-bottom: 15px;
+      font-style: italic;
+      color: #ccc;
+    }
+
+    .kotak {
+      width: 220px;
+      height: 150px;
+      display: none;
+      margin: 20px auto;
+      border-radius: 15px;
+      padding: 20px;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    }
+
+    .kotak span {
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    button {
+      margin: 5px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: rgba(255,255,255,0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Latihan jQuery Interaktif</h1>
+
+  <!-- 1. Hide/Show -->
+  <div class="section">
+    <h2>1. Hide / Show / Toggle</h2>
+    <p>Klik tombol di bawah untuk menampilkan atau menyembunyikan konten secara langsung.</p>
+    <button id="btnShow">Tampilkan</button>
+    <button id="btnHide">Sembunyikan</button>
+    <button id="btnToggle">Toggle</button>
+    <div id="kotak1" class="kotak" style="background-color: rgba(26, 188, 156, 0.9);">
+      <span>Semangat terus belajar jQuery ya!</span>
+    </div>
+  </div>
+
+  <!-- 2. Fade -->
+  <div class="section">
+    <h2>2. Fade Effect</h2>
+    <p>Gunakan efek transisi halus dengan fade in dan fade out.</p>
+    <button id="btnFadeIn">Fade In</button>
+    <button id="btnFadeOut">Fade Out</button>
+    <button id="btnFadeToggle">Fade Toggle</button>
+    <div id="kotak2" class="kotak" style="background-color: rgba(231, 76, 60, 0.9);">
+      <span>Jangan pernah menyerah!</span>
+    </div>
+  </div>
+
+  <!-- 3. Slide -->
+  <div class="section">
+    <h2>3. Slide Effect</h2>
+    <p>Gunakan efek slide up atau slide down untuk animasi vertikal.</p>
+    <button id="btnSlideDown">Slide Down</button>
+    <button id="btnSlideUp">Slide Up</button>
+    <button id="btnSlideToggle">Slide Toggle</button>
+    <div id="kotak3" class="kotak" style="background-color: rgba(243, 156, 18, 0.9);">
+      <span>Sedikit demi sedikit, lama-lama pasti bisa kok</span>
+    </div>
+  </div>
+
+  <!-- 4. Animate -->
+  <div class="section">
+    <h2>4. Animate</h2>
+    <p>Mengubah ukuran, opacity, dan posisi dengan animasi jQuery.</p>
+    <button id="btnAnimate">Jalankan Animasi</button>
+    <div id="kotak4" class="kotak" style="background-color: rgba(142, 68, 173, 0.9);">
+      <span>Jangan Pikirin yang lain, kamu udah keren banget</span>
+    </div>
+  </div>
+
+  <!-- 5. Chaining -->
+  <div class="section">
+    <h2>5. Chaining</h2>
+    <p>Efek berantai: chaining beberapa aksi jQuery sekaligus.</p>
+    <button id="btnChaining">Jalankan Chaining</button>
+    <div id="kotak5" class="kotak" style="background-color: rgba(46, 204, 113, 0.9);">
+      <span>Tetap semangat ya, perjalanan nya masih jauh!!</span>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      $("#btnShow").click(() => $("#kotak1").show());
+      $("#btnHide").click(() => $("#kotak1").hide());
+      $("#btnToggle").click(() => $("#kotak1").toggle());
+
+      $("#btnFadeIn").click(() => $("#kotak2").fadeIn());
+      $("#btnFadeOut").click(() => $("#kotak2").fadeOut());
+      $("#btnFadeToggle").click(() => $("#kotak2").fadeToggle());
+
+      $("#btnSlideDown").click(() => $("#kotak3").slideDown());
+      $("#btnSlideUp").click(() => $("#kotak3").slideUp());
+      $("#btnSlideToggle").click(() => $("#kotak3").slideToggle());
+
+      $("#btnAnimate").click(() => {
+        $("#kotak4").show()
+          .css("background-color", "#8e44ad")
+          .animate({
+            width: "300px",
+            height: "100px",
+            opacity: 0.5,
+            marginLeft: "50px"
+          }, 1000)
+          .queue(function (next) {
+            $(this).css("background-color", "#9b59b6");
+            next();
+          })
+          .animate({
+            width: "220px",
+            height: "150px",
+            opacity: 1,
+            marginLeft: "0px"
+          }, 1000);
+      });
+
+      $("#btnChaining").click(() => {
+        $("#kotak5")
+          .slideDown(400)
+          .css("background-color", "#34495e")
+          .fadeTo(800, 0.3)
+          .fadeTo(800, 1.0)
+          .slideUp(400);
+      });
+    });
+  </script>
+
+</body>
+</html>
